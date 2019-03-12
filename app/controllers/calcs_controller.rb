@@ -6,13 +6,14 @@ class CalcsController < ApplicationController
     num2 = params[:num2].to_i
 
     # calcで場合分けし、計算結果を@answerに代入
-    @answer = if calc == "addition"
+    @answer = case calc 
+              when "addition"
                 num1 + num2
-              elsif calc == "subtraction"
+              when "subtraction"
                 num1 - num2
-              elsif calc == "multiplication"
+              when "multiplication"
                 num1 * num2
-              elsif calc == "division"
+              when "division"
                 num2 == 0 ? "0で割ることはできません" : num1 / num2
               else
                 "URLが間違っています"
